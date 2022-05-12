@@ -1,12 +1,9 @@
-import { SafeAreaView, StyleSheet, Platform } from 'react-native';
-import React from 'react';
+import { SafeAreaView, Platform } from 'react-native';
+import styled from 'styled-components/native';
 
-export default function SafeArea({ children }) {
-  return <SafeAreaView style={styles.view}>{children}</SafeAreaView>;
-}
-
-const styles = StyleSheet.create({
-  view: {
-    marginTop: Platform.OS === 'android' ? 25 : 0,
-  },
-});
+const SafeArea = styled(SafeAreaView)`
+  margin-top: ${Platform.OS === 'android' ? '25px' : '0'};
+  background-color: white;
+  flex: 1;
+`;
+export default SafeArea;

@@ -4,7 +4,7 @@ import React from 'react';
 export default function AccountView() {
   return (
     <View>
-      <Text style={styles.text}>sAccountVieww</Text>
+      <Text>sAccountVieww</Text>
     </View>
   );
 }

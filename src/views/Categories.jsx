@@ -16,7 +16,7 @@ export default function CategoriesView({ navigation }) {
         renderItem={({ item }) => (
           <Cell
             onPress={() =>
-              navigation.navigate('CategoryProducts', { title: item.title })
+              navigation.navigate('Catalog', { title: item.title })
             }
           >
             <CellImg source={item.img} />

@@ -5,6 +5,10 @@ import { Story, SearchBar } from '../components';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CategoriesView from './Categories';
 import CatalogView from './Catalog';
+import ProductDetailView from './ProductDetail';
+import SvgArrowLeft from './../assets/icons/ArrowLeft';
+import HeaderButton from '../components/HeaderButton';
+import SvgHeart from '../assets/icons/Heart';
 
 function HomeView({ navigation }) {
   return (
@@ -140,9 +144,14 @@ function HomeStack() {
         options={stackOptions}
       />
       <Stack.Screen
-        name="CategoryProducts"
+        name="Catalog"
         component={CatalogView}
         options={stackOptions}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetailView}
+        options={productDetailStyle}
       />
     </Stack.Navigator>
   );
@@ -158,5 +167,20 @@ const stackOptions = ({ route, navigation }) => {
     },
   };
 };
-
+const productDetailStyle = ({ route, navigation }) => {
+  return {
+    headerShadowVisible: false,
+    headerTitle: '',
+    headerStyle: {
+      backgroundColor: 'transparent',
+    },
+    headerTransparent: true,
+    headerLeft: () => {
+      return <HeaderButton icon={<SvgArrowLeft />} />;
+    },
+    headerRight: () => {
+      return <HeaderButton icon={<SvgHeart fill="black" />} />;
+    },
+  };
+};
 export default HomeStack;

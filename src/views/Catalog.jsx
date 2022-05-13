@@ -6,8 +6,7 @@ import SvgDirectionVertical from './../assets/icons/DirectionVertical';
 import SvgFilter from './../assets/icons/Filter';
 import theme from '../theme/theme';
 import SvgHeart from '../assets/icons/Heart';
-
-export default function CatalogView() {
+export default function CatalogView({ navigation }) {
   return (
     <Container>
       <SearchBar />
@@ -23,16 +22,22 @@ export default function CatalogView() {
       </Nav>
       <List
         data={products}
-        horizontal
-        renderItem={({ item }) => {
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item, index }) => {
           return (
-            <Product>
+            <Product
+              index={index}
+              onPress={() => navigation.navigate('ProductDetail')}
+            >
               {item.label ? <Plabel>{item.label}</Plabel> : null}
               <Pimg source={item.img} />
 
               <Pnav>
                 <Price>{`$${item.price} `}</Price>
-                <SvgHeart fill="black" />
+                <SaveBtn>
+                  <SvgHeart fill="black" />
+                </SaveBtn>
               </Pnav>
               <Caption>{item.caption}</Caption>
             </Product>
@@ -61,21 +66,24 @@ const BtnText = styled.Text`
 `;
 
 const List = styled.FlatList`
-  margin: 16px 0;
-  flex-wrap: wrap;
+  margin-top: 16px;
 `;
 
-const Product = styled.View`
-  width: 50%;
+const Product = styled.TouchableOpacity`
+  width: 48%;
   position: relative;
+  margin-bottom: 24px;
+  margin-left: ${(props) => (props.index % 2 !== 0 ? '4%' : '0')};
 `;
 const Pimg = styled.Image`
   width: 100%;
   height: 200px;
+  border-radius: 8px;
 `;
 const Pnav = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 8px;
 `;
 const Plabel = styled.Text`
   ${theme.text.b2.medium}
@@ -87,8 +95,14 @@ const Plabel = styled.Text`
   background-color: ${theme.colors.charizard400};
   border-radius: 4px;
 `;
-const Price = styled.Text``;
-const Caption = styled.Text``;
+const Price = styled.Text`
+  ${theme.text.b1.medium}
+`;
+const SaveBtn = styled.TouchableOpacity``;
+const Caption = styled.Text`
+  ${theme.text.b3.regular}
+  color:${theme.colors.granita500};
+`;
 
 const products = [
   {

@@ -176,7 +176,12 @@ const productDetailStyle = ({ route, navigation }) => {
     },
     headerTransparent: true,
     headerLeft: () => {
-      return <HeaderButton icon={<SvgArrowLeft />} />;
+      return (
+        <HeaderButton
+          icon={<SvgArrowLeft />}
+          onPress={() => navigation.goBack()}
+        />
+      );
     },
     headerRight: () => {
       return <HeaderButton icon={<SvgHeart fill="black" />} />;

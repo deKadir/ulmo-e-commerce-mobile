@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import React from 'react';
 
-export default function HeaderButton({ icon }) {
+export default function HeaderButton({ icon, onPress }) {
   return (
     <TouchableOpacity
       style={{
@@ -9,6 +9,7 @@ export default function HeaderButton({ icon }) {
         borderRadius: 999,
         padding: 6,
       }}
+      onPress={onPress}
     >
       {icon}
     </TouchableOpacity>

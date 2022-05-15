@@ -1,17 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import SvgStar from '../assets/icons/Star';
-import SvgStarFilled from '../assets/icons/StarFilled';
-import { Button, Container } from '../components';
-import Input from '../components/Input';
+import { Button, Container, Input } from '../components';
 import theme from '../theme/theme';
-import SvgCamera from './../assets/icons/Camera';
-import SvgClose from './../assets/icons/Close';
 
-export default function NewReviewView() {
+import { Camera, StarFilled, Star, Close } from '../assets/icons/index';
+export default function AddReviewView() {
   const [rate, setRate] = React.useState(1);
   const changeRate = (k) => setRate(k);
-
   return (
     <Container>
       <Header>
@@ -20,14 +15,14 @@ export default function NewReviewView() {
             .fill(0)
             .map((item, key) => {
               return key + 1 <= rate ? (
-                <SvgStarFilled
+                <StarFilled
                   fill={theme.colors.charizard400}
                   width="32px"
                   height="32px"
                   onPress={() => changeRate(key + 1)}
                 />
               ) : (
-                <SvgStar
+                <Star
                   width="32px"
                   height="32px"
                   fill={theme.colors.charizard400}
@@ -95,7 +90,7 @@ const AddImage = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 8px;
 `;
-const IconCamera = styled(SvgCamera)`
+const IconCamera = styled(Camera)`
   position: absolute;
 `;
 const Image = styled.Image`
@@ -104,7 +99,7 @@ const Image = styled.Image`
   position: relative;
   border-radius: 8px;
 `;
-const RemoveImage = styled(SvgClose)`
+const RemoveImage = styled(Close)`
   position: absolute;
   padding: 2px;
   background-color: rgba(255, 255, 255, 0.7);

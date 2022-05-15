@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SvgStarFilled from './../assets/icons/StarFilled';
-import SvgStar from './../assets/icons/Star';
+import { Star, StarFilled } from '../assets/icons';
 import theme from '../theme/theme';
 export default function Review(data) {
   return (
@@ -13,9 +12,9 @@ export default function Review(data) {
             .map((item, key) => {
               if (key + 1 <= data.stars)
                 return (
-                  <SvgStarFilled fill={theme.colors.charizard400} key={key} />
+                  <StarFilled fill={theme.colors.charizard400} key={key} />
                 );
-              return <SvgStar fill="gray" key={key} />;
+              return <Star fill="gray" key={key} />;
             })}
         </Rating>
         <Time>{data.time}</Time>

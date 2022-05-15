@@ -1,17 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import theme from './../theme/theme';
-import { Story, SearchBar } from '../components';
+import { Story, SearchBar, HeaderButton } from '../components';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CategoriesView from './Categories';
-import CatalogView from './Catalog';
-import ProductDetailView from './ProductDetail';
-import SvgArrowLeft from './../assets/icons/ArrowLeft';
-import HeaderButton from '../components/HeaderButton';
-import SvgHeart from '../assets/icons/Heart';
-import ReviewsView from './Reviews';
-import NewReviewView from './NewReview';
-import SvgClose from './../assets/icons/Close';
+import { CatalogView, CategoriesView } from './index';
+import { ArrowLeft, Close } from '../assets/icons';
 
 function HomeView({ navigation }) {
   return (
@@ -23,7 +16,7 @@ function HomeView({ navigation }) {
         horizontal
         data={stories}
         renderItem={({ item }) => (
-          <Story {...item} onPress={() => navigation.navigate('Category')} />
+          <Story {...item} onPress={() => navigation.navigate('Story')} />
         )}
       />
       <Categories showsVerticalScrollIndicator={false}>
@@ -134,7 +127,7 @@ function HomeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Main"
+        name="Home"
         component={HomeView}
         options={{
           title: '',
@@ -151,28 +144,13 @@ function HomeStack() {
         component={CatalogView}
         options={stackOptions}
       />
-      <Stack.Screen
-        name="ProductDetail"
-        component={ProductDetailView}
-        options={productDetailOptions}
-      />
-      <Stack.Screen
-        name="Reviews"
-        component={ReviewsView}
-        options={reviewViewOptions}
-      />
-      <Stack.Screen
-        name="NewReview"
-        component={NewReviewView}
-        options={newReviewOptions}
-      />
     </Stack.Navigator>
   );
 }
 
 const stackOptions = ({ route, navigation }) => {
   return {
-    title: route.params.title,
+    title: route?.params?.title || '',
     headerTitleAlign: 'center',
     headerShadowVisible: false,
     headerTitleStyle: {
@@ -180,27 +158,7 @@ const stackOptions = ({ route, navigation }) => {
     },
   };
 };
-const productDetailOptions = ({ route, navigation }) => {
-  return {
-    headerShadowVisible: false,
-    headerTitle: '',
-    headerStyle: {
-      backgroundColor: 'transparent',
-    },
-    headerTransparent: true,
-    headerLeft: () => {
-      return (
-        <HeaderButton
-          icon={<SvgArrowLeft />}
-          onPress={() => navigation.goBack()}
-        />
-      );
-    },
-    headerRight: () => {
-      return <HeaderButton icon={<SvgHeart fill="black" />} />;
-    },
-  };
-};
+
 const reviewViewOptions = ({ route, navigation }) => {
   return {
     headerTitleAlign: 'center',
@@ -209,7 +167,7 @@ const reviewViewOptions = ({ route, navigation }) => {
     headerLeft: () => {
       return (
         <HeaderButton
-          icon={<SvgArrowLeft />}
+          icon={<ArrowLeft />}
           onPress={() => navigation.goBack()}
         />
       );
@@ -231,7 +189,7 @@ const newReviewOptions = ({ route, navigation }) => {
     headerTitle: 'New Review',
     headerLeft: () => {
       return (
-        <HeaderButton icon={<SvgClose />} onPress={() => navigation.goBack()} />
+        <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
       );
     },
   };

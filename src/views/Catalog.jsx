@@ -1,11 +1,9 @@
 import React from 'react';
-import { Container } from '../components';
-import { SearchBar } from '../components';
+import { Container, SearchBar } from '../components';
 import styled from 'styled-components/native';
-import SvgDirectionVertical from './../assets/icons/DirectionVertical';
-import SvgFilter from './../assets/icons/Filter';
+import { Filter, DirectionVertical, Heart } from '../assets/icons';
 import theme from '../theme/theme';
-import SvgHeart from '../assets/icons/Heart';
+
 export default function CatalogView({ navigation }) {
   return (
     <Container>
@@ -13,11 +11,11 @@ export default function CatalogView({ navigation }) {
       <Nav>
         <Button>
           <BtnText>Sort</BtnText>
-          <SvgDirectionVertical />
+          <DirectionVertical />
         </Button>
         <Button style={{ marginLeft: 15 }}>
           <BtnText>Filter</BtnText>
-          <SvgFilter />
+          <Filter />
         </Button>
       </Nav>
       <List
@@ -36,7 +34,7 @@ export default function CatalogView({ navigation }) {
               <Pnav>
                 <Price>{`$${item.price} `}</Price>
                 <SaveBtn>
-                  <SvgHeart fill="black" />
+                  <Heart fill="black" />
                 </SaveBtn>
               </Pnav>
               <Caption>{item.caption}</Caption>

@@ -54,7 +54,7 @@ function Tabbar({ state, descriptors, navigation }) {
             style={styles.tab}
             key={index}
           >
-            {label === 'Home' && (
+            {label === 'HomeStack' && (
               <>
                 <SvgLogotype
                   fill={

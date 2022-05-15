@@ -19,7 +19,6 @@ export default function Button({
 
 const Btn = styled.TouchableOpacity`
   flex-direction: row;
-  flex: 1;
   padding: 20px 16px;
   justify-content: center;
   border-radius: 8px;

@@ -9,6 +9,9 @@ import ProductDetailView from './ProductDetail';
 import SvgArrowLeft from './../assets/icons/ArrowLeft';
 import HeaderButton from '../components/HeaderButton';
 import SvgHeart from '../assets/icons/Heart';
+import ReviewsView from './Reviews';
+import NewReviewView from './NewReview';
+import SvgClose from './../assets/icons/Close';
 
 function HomeView({ navigation }) {
   return (
@@ -151,7 +154,17 @@ function HomeStack() {
       <Stack.Screen
         name="ProductDetail"
         component={ProductDetailView}
-        options={productDetailStyle}
+        options={productDetailOptions}
+      />
+      <Stack.Screen
+        name="Reviews"
+        component={ReviewsView}
+        options={reviewViewOptions}
+      />
+      <Stack.Screen
+        name="NewReview"
+        component={NewReviewView}
+        options={newReviewOptions}
       />
     </Stack.Navigator>
   );
@@ -167,7 +180,7 @@ const stackOptions = ({ route, navigation }) => {
     },
   };
 };
-const productDetailStyle = ({ route, navigation }) => {
+const productDetailOptions = ({ route, navigation }) => {
   return {
     headerShadowVisible: false,
     headerTitle: '',
@@ -188,4 +201,48 @@ const productDetailStyle = ({ route, navigation }) => {
     },
   };
 };
+const reviewViewOptions = ({ route, navigation }) => {
+  return {
+    headerTitleAlign: 'center',
+    headerAlignItems: 'center',
+    headerShadowVisible: false,
+    headerLeft: () => {
+      return (
+        <HeaderButton
+          icon={<SvgArrowLeft />}
+          onPress={() => navigation.goBack()}
+        />
+      );
+    },
+    headerRight: () => {
+      return (
+        <ReviewHeaderRight onPress={() => navigation.navigate('NewReview')}>
+          <ReviewHeaderRightText>New Review</ReviewHeaderRightText>
+        </ReviewHeaderRight>
+      );
+    },
+  };
+};
+const newReviewOptions = ({ route, navigation }) => {
+  return {
+    headerTitleAlign: 'center',
+    headerAlignItems: 'center',
+    headerShadowVisible: false,
+    headerTitle: 'New Review',
+    headerLeft: () => {
+      return (
+        <HeaderButton icon={<SvgClose />} onPress={() => navigation.goBack()} />
+      );
+    },
+  };
+};
+
+const ReviewHeaderRight = styled.TouchableOpacity`
+  background-color: white;
+  justify-content: flex-end;
+`;
+const ReviewHeaderRightText = styled.Text`
+  ${theme.text.b1.medium}
+  margin-top:6px;
+`;
 export default HomeStack;

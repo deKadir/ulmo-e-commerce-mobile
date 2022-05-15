@@ -3,10 +3,9 @@ import styled from 'styled-components/native';
 import theme from '../theme/theme';
 import SvgBag from '../assets/icons/Bag';
 
-export default function ProductDetailView() {
+export default function ProductDetailView({ navigation }) {
   return (
     <Container>
-      {/* <Image source={require('../assets/images/productDetail.png')} /> */}
       <ProductCarousel data={data} />
       <Detail>
         <Price>$150.00</Price>
@@ -29,20 +28,23 @@ export default function ProductDetailView() {
         </Colors>
         <Button title="Add to bag" icon={<SvgBag fill="#212121" />} />
       </Detail>
+      <Infos>
+        <ExtraInfo onPress={() => navigation.navigate('Reviews')}>
+          <InfoText>Reviews</InfoText>
+          <ReviewCount>32</ReviewCount>
+        </ExtraInfo>
+      </Infos>
     </Container>
   );
 }
 
 const Container = styled.ScrollView`
   flex: 1;
-  background-color: white;
-`;
-const Image = styled.Image`
-  width: 100%;
 `;
 
 const Detail = styled.View`
   padding: 24px 16px;
+  flex: auto;
 `;
 const Price = styled.Text`
   ${theme.text.h2.semiBold}
@@ -85,6 +87,23 @@ const ColorText = styled.Text`
   ${theme.text.b2.medium}
   color: ${(props) => props.textColor};
   margin-left: 8px;
+`;
+
+const Infos = styled.View`
+  flex: none;
+`;
+const ExtraInfo = styled.TouchableOpacity`
+  padding: 20px 16px;
+  background-color: white;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+const InfoText = styled.Text`
+  ${theme.text.b1.regular}
+`;
+const ReviewCount = styled.Text`
+  ${theme.text.b1.regular}
+  color:${theme.colors.granita500}
 `;
 const data = [
   {

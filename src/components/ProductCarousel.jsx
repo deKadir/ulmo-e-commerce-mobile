@@ -23,7 +23,7 @@ export default function ProductCarousel({ data }) {
       />
       <Pagination>
         {data?.map((item, key) =>
-          index === key ? <DotActive /> : <Dot key={key} />
+          index === key ? <DotActive key={key} /> : <Dot key={key} />
         )}
       </Pagination>
     </Container>

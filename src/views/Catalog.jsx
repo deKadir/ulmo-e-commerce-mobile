@@ -1,19 +1,23 @@
-import React from 'react';
-import { Container, SearchBar } from '../components';
+import React, { useState } from 'react';
+import { Container, SearchBar, SortSheet } from '../components';
 import styled from 'styled-components/native';
 import { Filter, DirectionVertical, Heart } from '../assets/icons';
 import theme from '../theme/theme';
 
 export default function CatalogView({ navigation }) {
+  const [visible, setVisible] = useState(false);
   return (
     <Container>
       <SearchBar />
       <Nav>
-        <Button>
+        <Button onPress={() => setVisible(true)}>
           <BtnText>Sort</BtnText>
           <DirectionVertical />
         </Button>
-        <Button style={{ marginLeft: 15 }}>
+        <Button
+          style={{ marginLeft: 15 }}
+          onPress={() => navigation.navigate('Filter')}
+        >
           <BtnText>Filter</BtnText>
           <Filter />
         </Button>
@@ -42,6 +46,7 @@ export default function CatalogView({ navigation }) {
           );
         }}
       />
+      <SortSheet visible={visible} setVisible={setVisible} />
     </Container>
   );
 }

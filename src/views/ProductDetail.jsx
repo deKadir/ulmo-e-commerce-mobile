@@ -2,6 +2,7 @@ import { Button, ProductCarousel } from '../components';
 import styled from 'styled-components/native';
 import theme from '../theme/theme';
 import SvgBag from '../assets/icons/Bag';
+import { ChevronRight } from '../assets/icons';
 
 export default function ProductDetailView({ navigation }) {
   return (
@@ -32,6 +33,10 @@ export default function ProductDetailView({ navigation }) {
         <ExtraInfo onPress={() => navigation.navigate('Reviews')}>
           <InfoText>Reviews</InfoText>
           <ReviewCount>32</ReviewCount>
+        </ExtraInfo>
+        <ExtraInfo onPress={() => navigation.navigate('ProductInfo')}>
+          <InfoText>Product information</InfoText>
+          <ChevronRight />
         </ExtraInfo>
       </Infos>
     </Container>

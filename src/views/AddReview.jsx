@@ -20,6 +20,7 @@ export default function AddReviewView() {
                   width="32px"
                   height="32px"
                   onPress={() => changeRate(key + 1)}
+                  key={key}
                 />
               ) : (
                 <Star
@@ -27,6 +28,7 @@ export default function AddReviewView() {
                   height="32px"
                   fill={theme.colors.charizard400}
                   onPress={() => changeRate(key + 1)}
+                  key={key}
                 />
               );
             })}

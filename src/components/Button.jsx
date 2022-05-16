@@ -22,6 +22,7 @@ const Btn = styled.TouchableOpacity`
   padding: 20px 16px;
   justify-content: center;
   border-radius: 8px;
+  height: 64px;
 `;
 
 const Txt = styled.Text`

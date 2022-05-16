@@ -1,6 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import React from 'react';
-
+import styled from 'styled-components/native';
+import theme from '../theme/theme';
 export default function HeaderButton({ icon, onPress }) {
   return (
     <TouchableOpacity
@@ -15,3 +16,21 @@ export default function HeaderButton({ icon, onPress }) {
     </TouchableOpacity>
   );
 }
+
+export const TextButton = ({ onPress, title }) => {
+  return (
+    <TxtButton onPress={onPress}>
+      <Txt>{title}</Txt>
+    </TxtButton>
+  );
+};
+
+const TxtButton = styled.TouchableOpacity`
+  background-color: white;
+  justify-content: flex-end;
+`;
+
+const Txt = styled.Text`
+  ${theme.text.b1.medium}
+  margin-top:6px;
+`;

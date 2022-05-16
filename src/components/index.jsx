@@ -8,3 +8,5 @@ export { default as ProductCarousel } from './ProductCarousel';
 export { default as Review } from './Review';
 export { default as HeaderButton } from './HeaderButton';
 export { default as Input } from './Input';
+export { default as Checkbox } from './Checkbox';
+export { default as SortSheet } from './SortSheet';

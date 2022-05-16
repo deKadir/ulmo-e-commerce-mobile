@@ -1,10 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { Tabbar, HeaderButton } from './src/components';
 import { useFonts } from 'expo-font';
 import { View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import styled from 'styled-components';
 import {
   AccountView,
   AddReviewView,
@@ -13,11 +11,14 @@ import {
   ProductDetailView,
   ReviewsView,
   StoryView,
+  FilterView,
+  FilterOptionView,
+  ProductInfoView,
 } from './src/views';
 import { ArrowLeft, Heart, Close } from './src/assets/icons';
-import theme from './src/theme/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeStack from './src/views/Home';
+import { TextButton } from './src/components/HeaderButton';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -57,6 +58,21 @@ export default function App() {
           name="Story"
           component={StoryView}
           options={stackStoryOptions}
+        />
+        <Stack.Screen
+          name="Filter"
+          component={FilterView}
+          options={filterStackOptions}
+        />
+        <Stack.Screen
+          name="FilterOption"
+          component={FilterOptionView}
+          options={filterOptionStackOptions}
+        />
+        <Stack.Screen
+          name="ProductInfo"
+          component={ProductInfoView}
+          options={productInfoOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -107,9 +123,10 @@ const reviewViewOptions = ({ route, navigation }) => {
     },
     headerRight: () => {
       return (
-        <ReviewHeaderRight onPress={() => navigation.navigate('AddReview')}>
-          <ReviewHeaderRightText>New Review</ReviewHeaderRightText>
-        </ReviewHeaderRight>
+        <TextButton
+          title="New Review"
+          onPress={() => navigation.navigate('AddReview')}
+        />
       );
     },
   };
@@ -131,16 +148,19 @@ const newReviewOptions = ({ route, navigation }) => {
 const stackStoryOptions = ({ route, navigation }) => {
   return {
     headerTitle: '',
-    headerShown: false,
+    headerTransparent: true,
+    headerBackVisible: false,
+
+    headerRight: () => (
+      <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
+    ),
   };
 };
 const productDetailOptions = ({ route, navigation }) => {
   return {
     headerShadowVisible: false,
     headerTitle: '',
-    headerStyle: {
-      backgroundColor: 'transparent',
-    },
+
     headerTransparent: true,
     headerLeft: () => {
       return (
@@ -155,11 +175,38 @@ const productDetailOptions = ({ route, navigation }) => {
     },
   };
 };
-const ReviewHeaderRight = styled.TouchableOpacity`
-  background-color: white;
-  justify-content: flex-end;
-`;
-const ReviewHeaderRightText = styled.Text`
-  ${theme.text.b1.medium}
-  margin-top:6px;
-`;
+const filterStackOptions = ({ route, navigation }) => {
+  return {
+    headerTitleAlign: 'center',
+    headerShadowVisible: false,
+    headerLeft: () => (
+      <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
+    ),
+    headerRight: () => (
+      <TextButton title="Clear" onPress={() => navigation.goBack()} />
+    ),
+  };
+};
+const productInfoOptions = ({ route, navigation }) => {
+  return {
+    headerShadowVisible: false,
+    headerTitle: '',
+
+    headerLeft: () => (
+      <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
+    ),
+  };
+};
+const filterOptionStackOptions = ({ route, navigation }) => {
+  return {
+    headerTitleAlign: 'center',
+    headerShadowVisible: false,
+    title: route.params.title || '',
+    headerLeft: () => (
+      <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
+    ),
+    headerRight: () => (
+      <TextButton title="Clear" onPress={() => navigation.goBack()} />
+    ),
+  };
+};

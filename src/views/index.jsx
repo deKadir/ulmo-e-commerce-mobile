@@ -8,3 +8,6 @@ export { default as AddReviewView } from './AddReview';
 export { default as ProductDetailView } from './ProductDetail';
 export { default as ReviewsView } from './Reviews';
 export { default as StoryView } from './Story';
+export { default as FilterView } from './Filter';
+export { default as FilterOptionView } from './FilterOption';
+export { default as ProductInfoView } from './ProductInfo';

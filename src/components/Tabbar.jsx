@@ -63,7 +63,7 @@ function Tabbar({ state, descriptors, navigation }) {
                 />
               </>
             )}
-            {label === 'Bag' && (
+            {label === 'BagStack' && (
               <SvgBag
                 fill={isFocused ? theme.colors.black : theme.colors.granita400}
               />

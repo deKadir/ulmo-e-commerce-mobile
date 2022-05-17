@@ -52,3 +52,4 @@ export { default as Netherlands } from './Netherlands';
 export { default as Plus } from './Plus';
 export { default as StarFilled } from './StarFilled';
 export { default as Star } from './Star';
+export { default as Pin } from './Pin';

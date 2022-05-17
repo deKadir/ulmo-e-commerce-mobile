@@ -19,6 +19,7 @@ import { ArrowLeft, Heart, Close } from './src/assets/icons';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeStack from './src/views/Home';
 import { TextButton } from './src/components/HeaderButton';
+import BagStack from './src/views/bag';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -89,8 +90,8 @@ function Tabs() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Bag"
-        component={BagView}
+        name="BagStack"
+        component={BagStack}
         options={{ headerShown: false }}
       />
       <Tab.Screen

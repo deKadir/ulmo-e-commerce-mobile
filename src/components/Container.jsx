@@ -5,5 +5,6 @@ const Container = styled.View`
   padding-top: 0;
   background-color: white;
   flex: 1;
+  padding-bottom: 0;
 `;
 export default Container;

@@ -1,5 +1,5 @@
-import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import * as React from 'react';
+import Svg, { Path } from 'react-native-svg';
 
 const SvgClear = (props) => (
   <Svg
@@ -18,7 +18,7 @@ const SvgClear = (props) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-2 0a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"
-      fill="#212121"
+      fill={props.fill || '#212121'}
     />
   </Svg>
 );

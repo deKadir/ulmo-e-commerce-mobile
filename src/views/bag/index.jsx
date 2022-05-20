@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { Clear } from '../../assets/icons';
 import theme from '../../theme/theme';
 import Product from './Product';
-import { ContactInfoView, DeliveryMethodView } from '..';
+import { ContactInfoView, DeliveryMethodView, PaymentView } from '../index';
 function BagView({ navigation }) {
   const [bag, setBag] = React.useState(true);
   if (!bag) return <EmptyBag />;
@@ -139,6 +139,13 @@ function BagStack() {
       <Stack.Screen
         name="DeliveryMethod"
         component={DeliveryMethodView}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={PaymentView}
         options={{
           headerShown: false,
         }}

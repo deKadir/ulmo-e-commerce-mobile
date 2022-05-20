@@ -12,4 +12,5 @@ export { default as FilterView } from './Filter';
 export { default as FilterOptionView } from './FilterOption';
 export { default as ProductInfoView } from './ProductInfo';
 export { default as ContactInfoView } from './ContactInfo';
-export { default as DeliveryMethodView } from './DeliveryMethod';
+export { default as DeliveryMethodView } from './checkout/DeliveryMethod';
+export { default as PaymentView } from './checkout/Payment';

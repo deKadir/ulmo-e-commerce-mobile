@@ -181,19 +181,6 @@ const reviewViewOptions = ({ route, navigation }) => {
     },
   };
 };
-const newReviewOptions = ({ route, navigation }) => {
-  return {
-    headerTitleAlign: 'center',
-    headerAlignItems: 'center',
-    headerShadowVisible: false,
-    headerTitle: 'New Review',
-    headerLeft: () => {
-      return (
-        <HeaderButton icon={<Close />} onPress={() => navigation.goBack()} />
-      );
-    },
-  };
-};
 
 const ReviewHeaderRight = styled.TouchableOpacity`
   background-color: white;

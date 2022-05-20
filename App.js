@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   AccountView,
   AddReviewView,
-  BagView,
   FavoriteView,
   ProductDetailView,
   ReviewsView,

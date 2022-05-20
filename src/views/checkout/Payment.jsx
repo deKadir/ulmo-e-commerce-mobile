@@ -12,7 +12,7 @@ export default function Payment({ navigation }) {
   return (
     <SafeArea>
       <Container>
-        <Header title="Checkout" content="3 of 3" />
+        <Header title="Checkout" content="3 of 3" navigation={navigation} />
 
         <Title>payment method</Title>
 

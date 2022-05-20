@@ -17,7 +17,7 @@ const Option = ({ left, title, caption, right, onPress }) => {
   );
 };
 
-const Header = ({ title, content }) => {
+const Header = ({ title, content, navigation }) => {
   return (
     <HeaderContainer>
       <TouchableOpacity onPress={() => navigation.goBack()}>

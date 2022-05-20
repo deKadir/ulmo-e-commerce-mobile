@@ -34,7 +34,7 @@ const Container = styled.View`
 `;
 
 const CarouselCardItem = ({ item, index }) => {
-  return <CarouselImage source={{ uri: item.imgUrl }} />;
+  return <CarouselImage source={item.imgUrl} />;
 };
 const CarouselWrapper = styled(Carousel)`
   height: 200px;
@@ -44,7 +44,7 @@ const CarouselWrapper = styled(Carousel)`
 `;
 const CarouselImage = styled.Image`
   width: 100%;
-  aspect-ratio: 1;
+  height: 300px;
 `;
 const Pagination = styled.View`
   position: absolute;

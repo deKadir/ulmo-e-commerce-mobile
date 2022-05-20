@@ -13,7 +13,7 @@ export default function DeliveryMethod({ navigation }) {
   return (
     <SafeArea>
       <Container>
-        <Header title="Checkout" content="2 of 3" />
+        <Header title="Checkout" content="2 of 3" navigation={navigation} />
         <Title>delivery method</Title>
         <Option
           title="By courier"
